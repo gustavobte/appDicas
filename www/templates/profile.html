@@ -1,0 +1,44 @@
+<ion-view view-title="$uper Dicas" >
+    <ion-content ng-class="{expanded:$scope.isExpanded}">
+        <div class="hero slide-up" style="background-image: url('img/login.jpg');">
+            <div class="content">
+                <div class="avatar" style="background-image: url('img/crown.png');"></div>
+                <h3><a class="light">Melhores Dica$</a></h3>
+                <h4><p>"$eu dinheiro vale muito mai$!"</p></h4>
+            </div>
+        </div>
+        <div class="light tabs tabs-icon-top static" style="height: 100px; background-color: #0a9ec7; padding-top: 15px;">
+            <a ui-sref="app.activity" class="tab-item" style="font-size: 12px;">
+                <div class="app-icon-bank"></div> Bancarias
+            </a>
+            <a ui-sref="" class="tab-item" style="font-size: 12px;">
+                <div class="app-icon-super"></div> Supermecado
+            </a>
+            <a ui-sref="" class="tab-item" style="font-size: 12px;">
+                <div class="app-icon-online"></div> On-Line
+            </a>
+        </div>
+        <h4 class="content padding double-padding-x">Melhores dicas do Momento</h4>
+        <div class="list animate-fade-slide-in-right">
+            <a ui-sref="app.dica" class="item item-avatar item-icon-right">
+                <img src="img/bank.svg">
+                <h2>Não Pagar tarifas?</h2>
+                <p>Conta corrente sem custos...</p>
+                <i class="icon ion-plus-circled muted"></i>
+            </a>
+            <a ui-sref="" class="item item-avatar item-icon-right">
+                <img src="img/super.svg">
+                <h2>Marcas Genericas!</h2>
+                <p>Comprar ou <strike>não</strike> comprar?</p>
+                <i class="icon ion-plus-circled muted"></i>
+            </a>
+            <a ui-sref="" class="item item-avatar item-icon-right">
+                <img src="img/online.svg">
+                <h2>Cupon de desconto</h2>
+                <p>Até 70% de descontos...</p>
+                <i class="icon ion-plus-circled muted"></i>
+            </a>
+
+        </div>
+    </ion-content>
+</ion-view>
