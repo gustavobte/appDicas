@@ -212,12 +212,11 @@ angular.module('starter.controllers', [])
 })
     .controller('DicasCtrl', function($scope, $timeout, $stateParams, ionicMaterialInk, conectaFirebase,$state) {
 
-
-
         $scope.dados = conectaFirebase;
 
-        var dica = conectaFirebase.$getRecord($state.params.dicaId);
-        $scope.dica = angular.copy(dica);
+        // $scope.delete = function(dica){
+        //     conectaFirebase.$remove(dica);
+        // };
 
            $scope.dica = {
                tipoDica :'',
@@ -239,21 +238,15 @@ angular.module('starter.controllers', [])
             dica.updatedTime = Firebase.ServerValue.TIMESTAMP;
 
             conectaFirebase.$save(dica);
-            $state.go('app.login');
+            $state.go('dica');
+
         }
 
-         $scope.save = function(){
-         //  queueService.addPerson($scope.person);
-           //$state.go('queue');
-           $scope.dica.updatedTime = Firebase.ServerValue.TIMESTAMP;
-           Queue.$add($scope.dica);
-           $state.go('app.login');
-         }
-
-
         $scope.save = function(){
-            $scope.person.updatedTime = Firebase.ServerValue.TIMESTAMP;
-            conectaFirebase.$add($scope.person);
+
+            $scope.dica.updatedTime = Firebase.ServerValue.TIMESTAMP;
+            conectaFirebase.$add($scope.dica);
+            $state.go('dica');
         }
 
 
@@ -266,3 +259,5 @@ angular.module('starter.controllers', [])
 
 
 ;
+
+
