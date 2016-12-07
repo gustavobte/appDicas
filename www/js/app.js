@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'ionMdInput'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'ionMdInput', 'firebase'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -19,6 +19,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
         }
     });
 })
+
+.factory('conectaFirebase', function($firebaseArray, $firebase){
+
+    var ref = new Firebase('https://testeionic2278.firebaseio.com/');
+    return $firebaseArray(ref);
+})
+
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
@@ -126,6 +133,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             }
         })
 
+
+        .state('app.dicas1', {
+            url: '/dicas1',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/dicas1.html',
+                    controller: 'DicasCtrl'
+                },
+
+            }
+        })
+
         .state('app.dicaOnline', {
             url: '/dicaOnline',
             views: {
@@ -185,7 +204,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
         views: {
             'menuContent': {
                 templateUrl: 'templates/login.html',
-                controller: 'LoginCtrl'
+                controller: 'LoginCtrl',
+                controllerAs: 'vm'
             },
             'fabContent': {
                 template: ''
@@ -198,7 +218,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
         views: {
             'menuContent': {
                 templateUrl: 'templates/profile.html',
-                controller: 'ProfileCtrl'
+                controller: 'ProfileCtrl',
+                controllerAs: 'vm'
             },
             'fabContent': {
                 // template: '<button id="fab-profile" class="button button-fab button-fab-bottom-right button-energized-900"><i class="icon ion-plus"></i></button>',

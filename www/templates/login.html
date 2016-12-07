@@ -13,6 +13,16 @@
             <button ui-sref="app.profile" class="button button-full button-positive ink animated infinite pulse">Inicio</button>
         </div>
 
+        <ion-item href="#/edit/{{person.$id}}" ng-repeat="person in dados" class="item-icon-right item-remove-animate">
+            <h2>{{person.name}}</h2>
+            {{person.tipoDica}}
+            {{person.autorDica}}
+
+
+
+        </ion-item>
+
+
 
 
     </ion-content>

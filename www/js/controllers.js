@@ -87,7 +87,43 @@ angular.module('starter.controllers', [])
     };
 })
 
-.controller('LoginCtrl', function($scope, $timeout, $stateParams, ionicMaterialInk) {
+.controller('LoginCtrl', function($scope, $timeout, $stateParams, ionicMaterialInk, conectaFirebase,$state) {
+
+    $scope.dados = conectaFirebase;
+    $scope.add = function(){
+        $state.go('add');
+    };
+
+    $scope.delete = function(person){
+        conectaFirebase.$remove(person);
+    };
+
+    var person = conectaFirebase.$getRecord($state.params.personId);
+    $scope.person = angular.copy(person);
+
+
+
+    $scope.save = function(){
+        person.name = $scope.person.name;
+        person.status = $scope.person.status;
+        person.updatedTime = Firebase.ServerValue.TIMESTAMP;
+        person.novoCampo = $scope.person.novoCampo;
+        conectaFirebase.$save(person);
+        $state.go('app.login');
+    }
+
+    $scope.person = {
+        name:'',
+        status:'waiting in queue'
+    };
+
+    $scope.save = function(){
+        $scope.person.updatedTime = Firebase.ServerValue.TIMESTAMP;
+        conectaFirebase.$add($scope.person);
+        $state.go('app.login');
+    }
+
+
     $scope.$parent.clearFabs();
     $timeout(function() {
         $scope.$parent.hideHeader();
@@ -174,5 +210,59 @@ angular.module('starter.controllers', [])
     });
 
 })
+    .controller('DicasCtrl', function($scope, $timeout, $stateParams, ionicMaterialInk, conectaFirebase,$state) {
+
+
+
+        $scope.dados = conectaFirebase;
+
+        var dica = conectaFirebase.$getRecord($state.params.dicaId);
+        $scope.dica = angular.copy(dica);
+
+           $scope.dica = {
+               tipoDica :'',
+               tituloDica :  '',
+               autorDica :   '',
+               descricao :   '',
+               curtiu :     '',
+               compartilhou :''
+           };
+
+
+        $scope.save = function(){
+            dica.tipoDica = $scope.dica.tipoDica;
+            dica.tituloDica = $scope.dica.tituloDica;
+            dica.autorDica = $scope.dica.autorDica;
+            dica.descricao = $scope.dica.descricao;
+            dica.curtiu = $scope.dica.curtiu;
+            dica.compartilhou = $scope.dica.compartilhou;
+            dica.updatedTime = Firebase.ServerValue.TIMESTAMP;
+
+            conectaFirebase.$save(dica);
+            $state.go('app.login');
+        }
+
+         $scope.save = function(){
+         //  queueService.addPerson($scope.person);
+           //$state.go('queue');
+           $scope.dica.updatedTime = Firebase.ServerValue.TIMESTAMP;
+           Queue.$add($scope.dica);
+           $state.go('app.login');
+         }
+
+
+        $scope.save = function(){
+            $scope.person.updatedTime = Firebase.ServerValue.TIMESTAMP;
+            conectaFirebase.$add($scope.person);
+        }
+
+
+        $scope.$parent.clearFabs();
+        $timeout(function() {
+            $scope.$parent.hideHeader();
+        }, 0);
+        ionicMaterialInk.displayEffect();
+    })
+
 
 ;
