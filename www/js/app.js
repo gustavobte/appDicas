@@ -54,11 +54,83 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
             }
         }
     })
+
+        .state('app.dicasSuper', {
+            url: '/dicasSuper',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/dicasSuper.html',
+                    controller: 'ActivityCtrl'
+                },
+                'fabContent': {
+                    // template: '<button id="fab-activity" class="button button-fab button-fab-top-right expanded button-energized-900 flap"><i class="icon ion-paper-airplane"></i></button>',
+                    controller: function ($timeout) {
+                        $timeout(function () {
+                            document.getElementById('fab-activity').classList.toggle('on');
+                        }, 200);
+                    }
+                }
+            }
+        })
+        .state('app.dicasOnline', {
+            url: '/dicasOnline',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/dicasOnline.html',
+                    controller: 'ActivityCtrl'
+                },
+                'fabContent': {
+                    // template: '<button id="fab-activity" class="button button-fab button-fab-top-right expanded button-energized-900 flap"><i class="icon ion-paper-airplane"></i></button>',
+                    controller: function ($timeout) {
+                        $timeout(function () {
+                            document.getElementById('fab-activity').classList.toggle('on');
+                        }, 200);
+                    }
+                }
+            }
+        })
+
         .state('app.dica', {
             url: '/dica',
             views: {
                 'menuContent': {
                     templateUrl: 'templates/dica.html',
+                    controller: 'ActivityCtrl'
+                },
+                'fabContent': {
+                    template: '<button id="fab-friends" class="button button-fab button-fab-top-right expanded button-positive spin"><i class="icon ion-android-share-alt"></i></button>',
+                    controller: function ($timeout) {
+                        $timeout(function () {
+                            document.getElementById('fab-friends').classList.toggle('on');
+                        }, 900);
+                    }
+                }
+            }
+        })
+
+        .state('app.dicaSuper', {
+            url: '/dicaSuper',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/dicaSuper.html',
+                    controller: 'ActivityCtrl'
+                },
+                'fabContent': {
+                    template: '<button id="fab-friends" class="button button-fab button-fab-top-right expanded button-positive spin"><i class="icon ion-android-share-alt"></i></button>',
+                    controller: function ($timeout) {
+                        $timeout(function () {
+                            document.getElementById('fab-friends').classList.toggle('on');
+                        }, 900);
+                    }
+                }
+            }
+        })
+
+        .state('app.dicaOnline', {
+            url: '/dicaOnline',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/dicaOnline.html',
                     controller: 'ActivityCtrl'
                 },
                 'fabContent': {

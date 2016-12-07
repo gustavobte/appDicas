@@ -1,3 +1,7 @@
-{
-  "directory": "www/lib"
+{ 
+"strict-ssl": false,
+  "registry": "http://bower.herokuapp.com",
+  "directory": "bower_components",
+  "proxy":"http://grosap:*5052278gusta@proxylatam.indra.es:8080",
+  "https-proxy":"http://grosap:*5052278gusta@proxylatam.indra.es:8080"
 }
