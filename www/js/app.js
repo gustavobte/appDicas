@@ -24,6 +24,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
 
     var ref = new Firebase('https://testeionic2278.firebaseio.com/');
     return $firebaseArray(ref);
+
+
+
 })
 
 

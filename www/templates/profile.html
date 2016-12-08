@@ -20,22 +20,12 @@
         </div>
         <h4 class="content padding double-padding-x">Melhores dicas do Momento</h4>
         <div class="list animate-fade-slide-in-right">
-            <a ui-sref="app.dica" class="item item-avatar item-icon-right">
-                <img src="img/bank.svg">
-                <h2>Não Pagar tarifas?</h2>
-                <p>Conta corrente sem custos...</p>
-                <i class="icon ion-plus-circled muted"></i>
-            </a>
-            <a ui-sref="app.dicaSuper" class="item item-avatar item-icon-right">
-                <img src="img/super.svg">
-                <h2>Marcas Genericas!</h2>
-                <p>Comprar ou <strike>não</strike> comprar?</p>
-                <i class="icon ion-plus-circled muted"></i>
-            </a>
-            <a ui-sref="app.dicaOnline" class="item item-avatar item-icon-right">
-                <img src="img/online.svg">
-                <h2>Cupon de desconto</h2>
-                <p>Até 70% de descontos...</p>
+            <a ui-sref="app.dica" class="item item-avatar item-icon-right" ng-repeat="dica in dados | limitTo:3 |orderBy:random" >
+                <img class ="avatar" src="img/bank.svg" ng-show="dica.tipoDica == 1">
+                <img class ="avatar" src="img/super.svg" ng-show="dica.tipoDica == 2">
+                <img class ="avatar" src="img/online.svg" ng-show="dica.tipoDica == 3">
+                <h2><strong> {{dica.tituloDica}}</strong></h2>
+                <p>{{dica.descricao }}</p>
                 <i class="icon ion-plus-circled muted"></i>
             </a>
 

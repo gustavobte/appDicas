@@ -466,16 +466,16 @@ button.item.item-button-right {
   padding-left: $item-avatar-width + ($item-padding * 2);
   min-height: $item-avatar-width + ($item-padding * 2);
 
-  > img:first-child,
-  .item-image {
-    position: absolute;
-    top: $item-padding;
-    left: $item-padding;
-    max-width: $item-avatar-width;
-    max-height: $item-avatar-height;
-    width: 100%;
-    border-radius: $item-avatar-border-radius;
-  }
+  //> img:first-child,
+  //.item-image {
+  //  position: absolute;
+  //  top: $item-padding;
+  //  left: $item-padding;
+  //  max-width: $item-avatar-width;
+  //  max-height: $item-avatar-height;
+  //  width: 100%;
+  //  border-radius: $item-avatar-border-radius;
+  //}
 }
 
 .item-avatar-right,

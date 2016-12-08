@@ -3,7 +3,7 @@
 
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout, conectaFirebase) {
     // Form data for the login modal
     $scope.loginData = {};
     $scope.isExpanded = false;
@@ -15,6 +15,52 @@ angular.module('starter.controllers', [])
         navIcons.addEventListener('click', function() {
             this.classList.toggle('active');
         });
+    }
+
+
+
+    $scope.dados = conectaFirebase;
+
+    // $scope.delete = function(dica){
+    //     conectaFirebase.$remove(dica);
+    // };
+
+    $scope.dica = {
+        tipoDica :'',
+        tituloDica :  '',
+        autorDica :   '',
+        descricao :   '',
+        curtiu :     '',
+        compartilhou :''
+    };
+
+    $scope.dica = {
+        tipoDica :'',
+        tituloDica :  '',
+        autorDica :   '',
+        descricao :   '',
+        curtiu :     ''
+    };
+
+    $scope.save = function(){
+        dica.tipoDica = $scope.dica.tipoDica;
+        dica.tituloDica = $scope.dica.tituloDica;
+        dica.autorDica = $scope.dica.autorDica;
+        dica.descricao = $scope.dica.descricao;
+        dica.curtiu = $scope.dica.curtiu;
+        dica.compartilhou = $scope.dica.compartilhou;
+        dica.updatedTime = Firebase.ServerValue.TIMESTAMP;
+
+        conectaFirebase.$save(dica);
+        $state.go('dica');
+
+    }
+
+    $scope.save = function(){
+
+        $scope.dica.updatedTime = Firebase.ServerValue.TIMESTAMP;
+        conectaFirebase.$add($scope.dica);
+        $state.go('dica');
     }
 
     ////////////////////////////////////////
@@ -88,41 +134,6 @@ angular.module('starter.controllers', [])
 })
 
 .controller('LoginCtrl', function($scope, $timeout, $stateParams, ionicMaterialInk, conectaFirebase,$state) {
-
-    $scope.dados = conectaFirebase;
-    $scope.add = function(){
-        $state.go('add');
-    };
-
-    $scope.delete = function(person){
-        conectaFirebase.$remove(person);
-    };
-
-    var person = conectaFirebase.$getRecord($state.params.personId);
-    $scope.person = angular.copy(person);
-
-
-
-    $scope.save = function(){
-        person.name = $scope.person.name;
-        person.status = $scope.person.status;
-        person.updatedTime = Firebase.ServerValue.TIMESTAMP;
-        person.novoCampo = $scope.person.novoCampo;
-        conectaFirebase.$save(person);
-        $state.go('app.login');
-    }
-
-    $scope.person = {
-        name:'',
-        status:'waiting in queue'
-    };
-
-    $scope.save = function(){
-        $scope.person.updatedTime = Firebase.ServerValue.TIMESTAMP;
-        conectaFirebase.$add($scope.person);
-        $state.go('app.login');
-    }
-
 
     $scope.$parent.clearFabs();
     $timeout(function() {
@@ -212,42 +223,7 @@ angular.module('starter.controllers', [])
 })
     .controller('DicasCtrl', function($scope, $timeout, $stateParams, ionicMaterialInk, conectaFirebase,$state) {
 
-        $scope.dados = conectaFirebase;
 
-        // $scope.delete = function(dica){
-        //     conectaFirebase.$remove(dica);
-        // };
-
-           $scope.dica = {
-               tipoDica :'',
-               tituloDica :  '',
-               autorDica :   '',
-               descricao :   '',
-               curtiu :     '',
-               compartilhou :''
-           };
-
-
-        $scope.save = function(){
-            dica.tipoDica = $scope.dica.tipoDica;
-            dica.tituloDica = $scope.dica.tituloDica;
-            dica.autorDica = $scope.dica.autorDica;
-            dica.descricao = $scope.dica.descricao;
-            dica.curtiu = $scope.dica.curtiu;
-            dica.compartilhou = $scope.dica.compartilhou;
-            dica.updatedTime = Firebase.ServerValue.TIMESTAMP;
-
-            conectaFirebase.$save(dica);
-            $state.go('dica');
-
-        }
-
-        $scope.save = function(){
-
-            $scope.dica.updatedTime = Firebase.ServerValue.TIMESTAMP;
-            conectaFirebase.$add($scope.dica);
-            $state.go('dica');
-        }
 
 
         $scope.$parent.clearFabs();

@@ -1,55 +1,22 @@
 <ion-view view-title="Dicas Compras Online">
     <ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in ">
-        <div class="item card-item">
-            <div ui-sref="app.dicaOnline" class="card stable-bg ink ink-dark">
+
+        <div class="item card-item" ng-repeat="dica in dados | filter:{tipoDica: 3}">
+            <div ui-sref="app.dica" class="card stable-bg ink ink-dark">
                 <div class="item item-avatar item-text-wrap">
                     <span class="avatar" style="background-image: url('img/online.svg');"></span>
-                    <strong>Cupons de Desconto?</strong>
+                    <strong>{{dica.tituloDica}}</strong>
                     <div class="card-footer text-right">
-                        <i class="icon ion-android-share-alt energized"></i> 6
-                        <i class="icon ion-heart energized"></i> 23
+                        <i class="icon ion-android-share-alt energized"></i> {{dica.compartilhou}}
+                        <i class="icon ion-heart energized"></i> {{dica.curtiu }}
                         <div class="pull-left">
-                            Por <i class="icon ion-android-person"></i> Gustavo Silva
+                            Por <i class="icon ion-android-person"></i> {{dica.autorDica }}
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="item card-item">
-            <div ui-sref="app.dicaOnline" class="card stable-bg ink ink-dark">
-                <div class="item item-avatar item-text-wrap">
-                    <span class="avatar" style="background-image: url('img/online.svg');"></span>
-                    <strong>Cupons de Desconto?</strong>
-                    <div class="card-footer text-right">
-                        <i class="icon ion-android-share-alt energized"></i> 6
-                        <i class="icon ion-heart energized"></i> 23
-                        <div class="pull-left">
-                            Por <i class="icon ion-android-person"></i> Gustavo Silva
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item card-item">
-            <div ui-sref="app.dicaOnline" class="card stable-bg ink ink-dark">
-                <div class="item item-avatar item-text-wrap">
-                    <span class="avatar" style="background-image: url('img/online.svg');"></span>
-                    <strong>Cupons de Desconto?</strong>
-                    <div class="card-footer text-right">
-                        <i class="icon ion-android-share-alt energized"></i> 6
-                        <i class="icon ion-heart energized"></i> 23
-                        <div class="pull-left">
-                            Por <i class="icon ion-android-person"></i> Gustavo Silva
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
     </ion-content>
 </ion-view>

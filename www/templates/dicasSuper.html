@@ -1,47 +1,16 @@
 <ion-view view-title="Dicas Supermecado">
     <ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in ">
-        <div class="item card-item">
-            <div ui-sref="app.dicaSuper" class="card stable-bg ink ink-dark">
-                <div class="item item-avatar item-text-wrap">
-                    <span class="avatar" style="background-image: url('img/super.svg');"></span>
-                    <strong>Marcas Genericas?</strong>
-                    <div class="card-footer text-right">
-                        <i class="icon ion-android-share-alt balanced"></i> 6
-                        <i class="icon ion-heart balanced"></i> 23
-                        <div class="pull-left">
-                            Por <i class="icon ion-android-person"></i> Gustavo Silva
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item card-item">
-            <div ui-sref="app.dicaSuper" class="card stable-bg ink ink-dark">
+        <div class="item card-item" ng-repeat="dica in dados | filter:{tipoDica: 2}">
+            <div ui-sref="app.dica" class="card stable-bg ink ink-dark">
                 <div class="item item-avatar item-text-wrap">
                     <span class="avatar" style="background-image: url('img/super.svg');"></span>
-                    <strong>Marcas Genericas?</strong>
+                    <strong>{{dica.tituloDica}}</strong>
                     <div class="card-footer text-right">
-                        <i class="icon ion-android-share-alt balanced"></i> 6
-                        <i class="icon ion-heart balanced"></i> 23
+                        <i class="icon ion-android-share-alt balanced"></i> {{dica.compartilhou}}
+                        <i class="icon ion-heart balanced"></i> {{dica.curtiu }}
                         <div class="pull-left">
-                            Por <i class="icon ion-android-person"></i> Gustavo Silva
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="item card-item">
-            <div ui-sref="app.dicaSuper" class="card stable-bg ink ink-dark">
-                <div class="item item-avatar item-text-wrap">
-                    <span class="avatar" style="background-image: url('img/super.svg');"></span>
-                    <strong>Marcas Genericas?</strong>
-                    <div class="card-footer text-right">
-                        <i class="icon ion-android-share-alt balanced"></i> 6
-                        <i class="icon ion-heart balanced"></i> 23
-                        <div class="pull-left">
-                            Por <i class="icon ion-android-person"></i> Gustavo Silva
+                            Por <i class="icon ion-android-person"></i> {{dica.autorDica }}
 
                         </div>
                     </div>
